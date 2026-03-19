@@ -8,6 +8,7 @@ import {GifsContextProvider} from './context/GifsContext'
 import { Link, Route } from "wouter"
 
 export default function App() {
+  console.log("Cambio")
   return (
   <Pepito.Provider value={{}}>
       <div className="App">
