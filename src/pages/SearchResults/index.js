@@ -6,10 +6,11 @@ import useNearScreen from '../../hooks/useNearScreen'
 import debounce from 'just-debounce-it'
 import useSEO from '../../hooks/useSEO'
 import { Helmet } from 'react-helmet'
+import SearchForm from '../../components/SearchForm'
 
 export default function SearchResults ({ params }) {
-  const { keyword } = params
-  const { loading, gifs, setPage } = useGifs({ keyword })
+  const { keyword, rating = 'g' } = params
+  const { loading, gifs, setPage } = useGifs({ keyword, rating })
   const externalRef = useRef()
   const {isNearScreen} = useNearScreen( {externalRef: loading ? null : externalRef, once: false})
 
@@ -35,6 +36,9 @@ export default function SearchResults ({ params }) {
         <Helmet>
           <title>{title}</title>
         </Helmet>
+        <header>
+          <SearchForm initialKeyword={keyword} initialRating={rating}/>
+        </header>
         <h3 className="App-title">
           {decodeURI(keyword)}
         </h3>
