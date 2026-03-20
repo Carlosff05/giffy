@@ -1,11 +1,16 @@
 import { useCallback, useContext } from "react";
 import Context from "../context/UserContext";
+import loginService from "../services/login";
 
 export default function useUser() {
     const {jwt, setJwt} = useContext(Context)
 
-    const login = useCallback(() => {
-        setJwt('test')
+    const login = useCallback(({username, password}) => {
+        loginService({username, password})
+        .then(jwt => {setJwt(jwt)})
+        .catch(err => {
+            console.error(err)
+        })
     }, [setJwt]) 
 
     const logout = useCallback(() => {
