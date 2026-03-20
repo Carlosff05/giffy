@@ -1,3 +1,4 @@
+using BackendGiffy.DTOs;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BackendGiffy.Controllers
@@ -8,8 +9,8 @@ namespace BackendGiffy.Controllers
     {
         private static List<Cliente> clientes = new List<Cliente>
         {
-            new Cliente { Id = 1, Nombre = "Juan Pérez"},
-            new Cliente { Id = 2, Nombre = "María López"}
+            new Cliente { Id = 1, Nombre = "Juan Pérez", Contrasenna = "Hola"},
+            new Cliente { Id = 2, Nombre = "María López", Contrasenna = "Mundo"}
         };
 
         [HttpGet]
@@ -30,9 +31,10 @@ namespace BackendGiffy.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Cliente> CreateCliente([FromBody] Cliente nuevoCliente)
+        public ActionResult<Cliente> CreateCliente([FromBody] ClienteDTO clienteDTO)
         {
-            nuevoCliente.Id = clientes.Any() ? clientes.Max(c => c.Id) + 1 : 1;
+            int id = clientes.Any() ? clientes.Max(c => c.Id) + 1 : 1;
+            Cliente nuevoCliente = new Cliente{Id = id, Nombre = clienteDTO.Nombre, Contrasenna = clienteDTO.Contrasenna};
             clientes.Add(nuevoCliente);
 
             return CreatedAtAction(nameof(GetCliente), new { id = nuevoCliente.Id }, nuevoCliente);

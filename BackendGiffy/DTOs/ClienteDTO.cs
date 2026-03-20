@@ -1,8 +1,7 @@
-namespace BackendGiffy.Controllers
+namespace BackendGiffy.DTOs
 {
-    public class Cliente
+    public class ClienteDTO
     {
-        public int Id { get; set; }
         public string? Nombre { get; set; }
         public string? Contrasenna { get; set; }
     }
