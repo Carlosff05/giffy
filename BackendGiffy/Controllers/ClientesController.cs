@@ -9,8 +9,8 @@ namespace BackendGiffy.Controllers
     {
         private static List<Cliente> clientes = new List<Cliente>
         {
-            new Cliente { Id = 1, Nombre = "Juan Pérez", Contrasenna = "Hola"},
-            new Cliente { Id = 2, Nombre = "María López", Contrasenna = "Mundo"}
+            new Cliente { Id = 1, Nombre = "Juan Perez", Contrasenna = "Hola"},
+            new Cliente { Id = 2, Nombre = "Maria Lopez", Contrasenna = "Mundo"}
         };
 
         [HttpGet]
@@ -25,6 +25,20 @@ namespace BackendGiffy.Controllers
             var cliente = clientes.FirstOrDefault(c => c.Id == id);
 
             if (cliente == null)
+                return NotFound();
+
+            return Ok(cliente);
+        }
+
+        [HttpGet("login")]
+        public ActionResult<Cliente> Login(string nombre, string contrasenna)
+        {
+            var cliente = clientes.FirstOrDefault(c => c.Nombre == nombre);
+
+            if (cliente == null)
+                return NotFound();
+
+            if (cliente.Contrasenna != null && !cliente.Contrasenna.Equals(contrasenna)) 
                 return NotFound();
 
             return Ok(cliente);
