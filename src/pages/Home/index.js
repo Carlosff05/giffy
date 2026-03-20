@@ -7,7 +7,6 @@ import SearchForm from "../../components/SearchForm"
 import { Helmet } from "react-helmet"
 
 export default function Home() {
-  console.log("Un aadf mas")
   const {loading, gifs} = useGifs({keyword: localStorage.getItem('lastKeyword')})
 
   return (

@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import './App.css'
 import Home from './pages/Home'
 import SearchResults from './pages/SearchResults'
@@ -8,10 +8,25 @@ import {GifsContextProvider} from './context/GifsContext'
 import { Link, Route } from "wouter"
 
 export default function App() {
-  console.log("Cambio")
+
+  /*
+  Petición a mi API BackendGiffy
+  const [productos, setProductos] = useState([])
+
+  useEffect(() => {
+    fetch('http://localhost:5227/api/Productos')
+    .then(res => res.json())
+    .then(data => setProductos(data))
+    .then(() => console.log(productos))
+    .catch(err => console.log(err.Detail))
+  }, [])*/
+  
   return (
   <Pepito.Provider value={{}}>
       <div className="App">
+        <header>
+
+        </header>
         <Suspense>
           <section className="App-content">
             <Link to="/">
