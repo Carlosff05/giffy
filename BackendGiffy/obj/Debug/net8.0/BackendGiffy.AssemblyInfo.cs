@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BackendGiffy")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f9c33628fb1aa62399265a70bd83f7f902c1cca6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+446f9ce0ce25b3a536786d9ec2ad19a5d139c322")]
 [assembly: System.Reflection.AssemblyProductAttribute("BackendGiffy")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BackendGiffy")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

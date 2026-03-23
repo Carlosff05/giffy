@@ -11,21 +11,9 @@ import { UserContextProvider } from './context/UserContext';
 import { GifsContextProvider } from './context/GifsContext'
 
 import { Link, Route } from "wouter"
+import ErrorPage from './pages/ErrorPage';
 
 export default function App() {
-
-  /*
-  Petición a mi API BackendGiffy
-  const [productos, setProductos] = useState([])
-
-  useEffect(() => {
-    fetch('http://localhost:5227/api/Productos')
-    .then(res => res.json())
-    .then(data => setProductos(data))
-    .then(() => console.log(productos))
-    .catch(err => console.log(err.Detail))
-  }, [])*/
-
   return (
     <UserContextProvider>
       <div className="App">
@@ -57,7 +45,7 @@ export default function App() {
                 path='/register'
               />
               <Route
-                component={() => <h1>404 ERROR</h1>}
+                component={ErrorPage}
                 path={'/404'}
               />
             </GifsContextProvider>
