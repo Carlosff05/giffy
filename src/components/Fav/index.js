@@ -1,8 +1,9 @@
 import useUser from "../../hooks/useUser"
 import { useLocation } from "wouter"
 import './styles.css'
-import { useState } from "react"
-import Modal from "../Modal"
+import { useCallback, useState } from "react"
+import ModalPortal from "../Modal"
+import Login from "../Login"
 
 export default function Fav({id}) {
     const {isLogged, favs, addFav} = useUser()
@@ -15,9 +16,9 @@ export default function Fav({id}) {
         //addFav({id})
     }
 
-    const handleClose = () => {
+    const handleClose = useCallback(() => {
         setShowModal(false)
-    }
+    })
 
     const [
         label,
@@ -36,6 +37,6 @@ export default function Fav({id}) {
         <button className="gf-Fav" onClick={handleClick}>
             <span role="img" aria-label={label}>{emoji}</span>
         </button>
-        {showModal && <Modal>Hola</Modal>}
+        {showModal && <ModalPortal onClose={handleClose}><Login/></ModalPortal>}
     </>)
 }

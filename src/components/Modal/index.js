@@ -1,5 +1,19 @@
-export default function Modal({ children, onClose }) {
+import './styles.css'
+import ReactDOM from 'react-dom'
+
+function Modal({ children, onClose }) {
     return <div className="modal">
-        <button className='btn' onClick={onClose}>❌</button>
+        <div className="modal-content">
+            <button className='btn' onClick={onClose}>❌</button>
+            {children}
+        </div>
     </div>
+}
+
+export default function ModalPortal({children, onClose}) {
+    console.log(document.getElementById('modal-root'))
+    return ReactDOM.createPortal(
+        <Modal onClose={onClose}>{children}</Modal>,
+        document.getElementById('modal-root')
+    )
 }
