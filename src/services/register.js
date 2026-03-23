@@ -13,6 +13,7 @@ export default function register ({username, password}) {
       return res.json()
     })
     .then(res => {
-      return true
+        console.log(true)
+        return true
     })
 }
