@@ -23,7 +23,6 @@ export function useGifs ({ keyword, rating } = { keyword: null }) {
         setLoading(false)
         // guardamos la keyword en el localStorage
         localStorage.setItem('lastKeyword', keyword)
-        console.log(localStorage.getItem('lastKeyword'))
       })
   }, [keyword, keywordToUse, rating, setGifs])
 

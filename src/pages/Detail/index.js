@@ -1,4 +1,4 @@
-import Gif from '../../components/Gif/Gif'
+import Gif from '../../components/Gif'
 import useSingleGif from '../../hooks/useSingleGif'
 import Spinner from '../../components/Spinner'
 import { Redirect } from 'wouter'

@@ -3,17 +3,35 @@ import './App.css'
 import Home from './pages/Home'
 import SearchResults from './pages/SearchResults'
 import Detail from './pages/Detail'
-import Pepito from './context/StaticContext'
-import {GifsContextProvider} from './context/GifsContext'
+import Header from './components/Header';
+import Login from './pages/Login';
+import Register from './pages/Register'
+
+import { UserContextProvider } from './context/UserContext';
+import { GifsContextProvider } from './context/GifsContext'
+
 import { Link, Route } from "wouter"
 
 export default function App() {
-  console.log("Cambio")
+
+  /*
+  Petición a mi API BackendGiffy
+  const [productos, setProductos] = useState([])
+
+  useEffect(() => {
+    fetch('http://localhost:5227/api/Productos')
+    .then(res => res.json())
+    .then(data => setProductos(data))
+    .then(() => console.log(productos))
+    .catch(err => console.log(err.Detail))
+  }, [])*/
+
   return (
-  <Pepito.Provider value={{}}>
+    <UserContextProvider>
       <div className="App">
         <Suspense>
           <section className="App-content">
+            <Header />
             <Link to="/">
               <h1 className='App-title App-logo'>Giffy</h1>
             </Link>
@@ -24,11 +42,19 @@ export default function App() {
               />
               <Route
                 component={SearchResults}
-                path="/search/:keyword/:rating?"  
+                path="/search/:keyword/:rating?"
               />
               <Route
                 component={Detail}
                 path="/gif/:id"
+              />
+              <Route
+                component={Login}
+                path='/login'
+              />
+              <Route
+                component={Register}
+                path='/register'
               />
               <Route
                 component={() => <h1>404 ERROR</h1>}
@@ -38,6 +64,6 @@ export default function App() {
           </section>
         </Suspense>
       </div>
-    </Pepito.Provider>
+    </UserContextProvider>
   )
 }
