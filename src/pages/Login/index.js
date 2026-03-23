@@ -6,7 +6,7 @@ export default function Login() {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [_, pushLocation] = useLocation()
-    const {login, isLogged} = useUser()
+    const {isLogged, login} = useUser()
 
     useEffect(() => {
       if(isLogged) pushLocation('/')

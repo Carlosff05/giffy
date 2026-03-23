@@ -7,7 +7,8 @@ export default function useUser() {
 
     const login = useCallback(({username, password}) => {
         loginService({username, password})
-        .then(jwt => {setJwt(jwt)})
+        .then(jwt => {
+            setJwt(jwt)})
         .catch(err => {
             console.error(err)
         })
