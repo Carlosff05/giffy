@@ -9,14 +9,12 @@ export default function Login() {
     const {login, isLogged} = useUser()
 
     useEffect(() => {
-        if(isLogged) pushLocation('/')
+      if(isLogged) pushLocation('/')
     }, [isLogged, pushLocation])
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    login({username, password})
-    //alert(`${username} ${password}`)
-    //pushLocation('/')
+    login({username: username, password: password})
   }
 
   return (

@@ -9,8 +9,8 @@ namespace BackendGiffy.Controllers
     {
         private static List<Cliente> clientes = new List<Cliente>
         {
-            new Cliente { Id = 1, Nombre = "Juan Perez", Contrasenna = "Hola"},
-            new Cliente { Id = 2, Nombre = "Maria Lopez", Contrasenna = "Mundo"}
+            new Cliente { Id = 1, Username = "Juan Perez", Password = "Hola"},
+            new Cliente { Id = 2, Username = "Maria Lopez", Password = "Mundo"}
         };
 
         [HttpGet]
@@ -31,14 +31,14 @@ namespace BackendGiffy.Controllers
         }
 
         [HttpGet("login")]
-        public ActionResult<Cliente> Login(string nombre, string contrasenna)
+        public ActionResult<Cliente> Login(string Username, string Password)
         {
-            var cliente = clientes.FirstOrDefault(c => c.Nombre == nombre);
+            var cliente = clientes.FirstOrDefault(c => c.Username == Username);
 
             if (cliente == null)
                 return NotFound();
 
-            if (cliente.Contrasenna != null && !cliente.Contrasenna.Equals(contrasenna)) 
+            if (cliente.Password != null && !cliente.Password.Equals(Password)) 
                 return NotFound();
 
             return Ok(cliente);
@@ -48,7 +48,7 @@ namespace BackendGiffy.Controllers
         public ActionResult<Cliente> CreateCliente([FromBody] ClienteDTO clienteDTO)
         {
             int id = clientes.Any() ? clientes.Max(c => c.Id) + 1 : 1;
-            Cliente nuevoCliente = new Cliente{Id = id, Nombre = clienteDTO.Nombre, Contrasenna = clienteDTO.Contrasenna};
+            Cliente nuevoCliente = new Cliente{Id = id, Username = clienteDTO.Username, Password = clienteDTO.Password};
             clientes.Add(nuevoCliente);
 
             return CreatedAtAction(nameof(GetCliente), new { id = nuevoCliente.Id }, nuevoCliente);
@@ -62,7 +62,7 @@ namespace BackendGiffy.Controllers
             if (cliente == null)
                 return NotFound();
 
-            cliente.Nombre = clienteActualizado.Nombre;
+            cliente.Username = clienteActualizado.Username;
 
             return NoContent();
         }

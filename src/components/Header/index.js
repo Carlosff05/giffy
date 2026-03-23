@@ -5,11 +5,17 @@ import useUser from "../../hooks/useUser";
 
 export default function Header() {
     const {isLogged, logout} = useUser();
+
+    const handleClick = e => {
+        e.preventDefault()
+        logout()
+    }
+
     return (
         <header className="gf-header">
             {
                 isLogged ?
-                <Link onClick={logout}>
+                <Link onClick={handleClick}>
                     Logout
                 </Link>
                 : <Link to="/login">

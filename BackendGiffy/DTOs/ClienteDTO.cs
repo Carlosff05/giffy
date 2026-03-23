@@ -2,7 +2,7 @@ namespace BackendGiffy.DTOs
 {
     public class ClienteDTO
     {
-        public string? Nombre { get; set; }
-        public string? Contrasenna { get; set; }
+        public string? Username { get; set; }
+        public string? Password { get; set; }
     }
 } 
