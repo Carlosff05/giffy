@@ -1,7 +1,8 @@
+/** @jsx */
 import { Helmet } from "react-helmet"
 import SearchForm from "../../components/SearchForm"
 import { Link } from "wouter"
-import {css} from '@emotion/core'
+import {css, jsx} from '@emotion/react'
 
 const pageErrorStyles = css`
     flex-direction: column;
@@ -35,8 +36,7 @@ const gifsErrors = ['d2jjuAZzDSVLZ5kI', 'Bp3dFfoqpCKFyXuSzp', 'hv5AEBpH3ZyNoRnAB
 
 export default function ErrorPage() {
     const randomImage = () => {
-        return `https://media.giphy.com/media/
-        ${gifsErrors[Math.floor(Math.random() * gifsErrors.length) + 1]}/giphy.gif`
+        return `https://media.giphy.com/media/${gifsErrors[Math.floor(Math.random() * gifsErrors.length) + 1]}/giphy.gif`
     }
 
     return (
