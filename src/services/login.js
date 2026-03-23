@@ -13,7 +13,6 @@ export default function loginService ({username, password}) {
     })
     .then(res => {
       const jwt = res
-      console.log(jwt)
       return jwt
     })
 }

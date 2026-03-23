@@ -5,6 +5,7 @@ import SearchResults from './pages/SearchResults'
 import Detail from './pages/Detail'
 import Header from './components/Header';
 import Login from './pages/Login';
+import Register from './pages/Register'
 
 import { UserContextProvider } from './context/UserContext';
 import { GifsContextProvider } from './context/GifsContext'
@@ -51,7 +52,10 @@ export default function App() {
                 component={Login}
                 path='/login'
               />
-
+              <Route
+                component={Register}
+                path='/register'
+              />
               <Route
                 component={() => <h1>404 ERROR</h1>}
                 path={'/404'}

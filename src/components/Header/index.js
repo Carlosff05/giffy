@@ -4,7 +4,7 @@ import './styles.css'
 import useUser from "../../hooks/useUser";
 
 export default function Header() {
-    const {isLogged, logout} = useUser();
+    const { isLogged, logout } = useUser();
 
     const handleClick = e => {
         e.preventDefault()
@@ -15,14 +15,17 @@ export default function Header() {
         <header className="gf-header">
             {
                 isLogged ?
-                <Link onClick={handleClick}>
-                    Logout
-                </Link>
-                : <Link to="/login">
-                    Login
-                </Link>
+                    <Link onClick={handleClick}>
+                        Logout
+                    </Link>
+                    : <>
+                        <Link to="/login">
+                            Login
+                        </Link>
+                        <Link to="/register">Register</Link>
+                    </>
             }
-            
+
         </header>
     )
 }

@@ -5,8 +5,8 @@ import { useCallback, useState } from "react"
 import ModalPortal from "../Modal"
 import Login from "../Login"
 
-export default function Fav({id}) {
-    const {isLogged, favs, addFav} = useUser()
+export default function Fav({ id }) {
+    const { isLogged, favs, addFav } = useUser()
     const [, pushLocation] = useLocation()
     const [showModal, setShowModal] = useState(false)
 
@@ -20,23 +20,29 @@ export default function Fav({id}) {
         setShowModal(false)
     })
 
+    const handleLogin = useCallback(() => {
+        setShowModal(false)
+    })
+
     const [
         label,
         emoji
-    ] = isFaved 
-    ? [
-        'Remove Gif from favorites',
-        '❌'
-    ]
-    : [
-        'Add Gif to favorites',
-        '💖'
-    ]
+    ] = isFaved
+            ? [
+                'Remove Gif from favorites',
+                '❌'
+            ]
+            : [
+                'Add Gif to favorites',
+                '💖'
+            ]
 
     return (<>
         <button className="gf-Fav" onClick={handleClick}>
             <span role="img" aria-label={label}>{emoji}</span>
         </button>
-        {showModal && <ModalPortal onClose={handleClose}><Login/></ModalPortal>}
+        {showModal && <ModalPortal onClose={handleClose}>
+            <Login onLogin={handleLogin} />
+        </ModalPortal>}
     </>)
 }
