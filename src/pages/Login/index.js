@@ -1,34 +1,15 @@
 import { useEffect, useState } from 'react'
 import { useLocation } from 'wouter'
 import useUser from '../../hooks/useUser'
+import Login from '../../components/Login'
 
-export default function Login() {
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
-    const [_, pushLocation] = useLocation()
-    const {isLogged, isLoginLoading, hasLoginError, login} = useUser()
-
-    useEffect(() => {
-      if(isLogged) pushLocation('/')
-    }, [isLogged, pushLocation])
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    login({username: username, password: password})
-  }
-
+export default function LoginPage() {
   return (
     <>
       <h2>
         Login
       </h2>
-      {isLoginLoading && <strong>Checking credentials...</strong>}
-      {!isLoginLoading && <form onSubmit={handleSubmit}>
-        <button>Login</button>
-        <input placeholder='Username' onChange={e => setUsername(e.target.value)} value={username}/>
-        <input type='password' placeholder='Password' onChange={e => setPassword(e.target.value)} value={password}/>
-      </form>}
-      {hasLoginError && <strong>Credentials are invalid</strong>}
+      <Login/>
     </>
   )
 }

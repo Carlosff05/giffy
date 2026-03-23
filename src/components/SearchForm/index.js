@@ -27,13 +27,12 @@ function SearchForm({initialKeyword = '', initialRating = 'g'}) {
 
     return (
         <form onSubmit={handleSubmit}>
-            <button>Buscar</button>
-            <input placeholder="Search a gif here..." onChange={handleChange}
+            <button className="btn">Buscar</button>
+            <input className="" placeholder="Search a gif here..." onChange={handleChange}
                 type='text' value={keyword} />
             <select onChange={handleChangeRating} value={rating}>
                 {RATINGS.map(rating => <option key={rating}>{rating}</option>)}
             </select>
-            <small>{times}</small>
         </form>
     )
 }
