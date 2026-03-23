@@ -1,6 +1,7 @@
 import React, { useReducer } from "react";
 import { useLocation } from "wouter";
 import useForm from "./hook";
+import './styles.css'
 
 const RATINGS = ['g', 'pg', 'pg-13', 'r']
 
