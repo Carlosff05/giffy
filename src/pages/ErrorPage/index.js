@@ -3,16 +3,18 @@ import React from "react"
 import { Helmet } from "react-helmet"
 import SearchForm from "../../components/SearchForm"
 import { Link } from "wouter"
-import {css, jsx} from '@emotion/react'
+import { css } from '@emotion/react'
+import Button from "../../components/Button"
 
-const pageErrorStyles = css`
-    display: flex
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-    text-align: center;
-`
+//Ambas formas son válidas
+const pageErrorStyles = css({
+    display: "flex",
+    'flex-direction': "column",
+    'justify-content': "center",
+    'align-items': "center",
+    padding: "1rem",
+    'text-align': "center"
+})
 
 const code_error = css`
     font-size: 5rem;
@@ -24,11 +26,18 @@ const msg_error = css`
     font-size: 1.5rem;
     margin: 1rem 0;
 `
-const gif_error = css`
-    margin: 1rem auto;
-    width: 250px;
-    height: 250px;
-`
+
+
+const SIZE = '250px'
+const gif_error = css({
+    margin: "1rem auto",
+    width: SIZE,
+    height: SIZE,
+    ":hover": {
+        transform: 'scale(1.2)'
+    }
+})
+
 
 const gifsErrors = ['d2jjuAZzDSVLZ5kI', 'hv5AEBpH3ZyNoRnABG', 'hLwSzlKN8Fi6I']
 
@@ -48,12 +57,9 @@ export default function ErrorPage() {
             <div className="App-wrapper">
                 <div css={pageErrorStyles}>
                     <span css={code_error}>404</span>
-                    <br/>
                     <span css={msg_error}>Te perdiste, inutil</span>
-                    <br/>
                     <img css={gif_error} src={randomImage()} alt="alt-page-404"/>
-                    <br/>
-                    <Link to="/" className='btn'>Go to home</Link>
+                    <Button to="/" >Go back home</Button>
                 </div>
             </div>
         </>
