@@ -61,4 +61,5 @@ ul {
   top: 0;
   z-index: var(--zIndex-header);
   max-height: var(--search-size-mx-h);
+  text-align: center;
 }
