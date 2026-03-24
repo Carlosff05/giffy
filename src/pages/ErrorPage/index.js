@@ -59,7 +59,7 @@ export default function ErrorPage() {
                     <span css={code_error}>404</span>
                     <span css={msg_error}>Te perdiste, inutil</span>
                     <img css={gif_error} src={randomImage()} alt="alt-page-404"/>
-                    <Button to="/" >Go back home</Button>
+                    <Button href={'/'} >Go back home</Button>
                 </div>
             </div>
         </>

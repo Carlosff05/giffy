@@ -2,6 +2,7 @@ import React, { useReducer } from "react";
 import { useLocation } from "wouter";
 import useForm from "./hook";
 import './styles.css'
+import Button from "../Button";
 
 const RATINGS = ['g', 'pg', 'pg-13', 'r']
 
@@ -27,7 +28,7 @@ function SearchForm({initialKeyword = '', initialRating = 'g'}) {
 
     return (
         <form onSubmit={handleSubmit} className="c-search">
-            <button className="c-search-btn">Buscar</button>
+           <Button>Buscar</Button>
             <input className="c-search-input" placeholder="Search a gif here..." onChange={handleChange}
                 type='text' value={keyword} />
             <select className="c-search-list" onChange={handleChangeRating} value={rating}>
