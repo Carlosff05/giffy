@@ -10,7 +10,7 @@ const SIZES = {
 export const LinkedStyle = styled(LinkWouter)`
     border: 1px solid transparent;
     padding: .5rem 1rem;
-    background-color: var(--brand-color_3);
+    background-color: ${props => props.theme.colors.primary};
     color: var(--theme-body-txt);
     cursor: pointer;
     font-size: ${props => SIZES[props.size]};
